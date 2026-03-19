@@ -1,0 +1,20 @@
+layers:
+- query: way
+  feature:
+    title: |
+      {{ tags.name }}
+    body: |
+      {{ tags.description }}
+    style:
+      width: |
+        {{ tags._umap.weight|default(3) }}
+      color: |
+        {{ tags._umap.color }}
+      opacity: |
+        {{ tags._umap.opacity|default(1) }}
+      fillColor: |
+        {{ tags._umap.fillColor|default(tags._umap.color) }}
+      fillOpacity: |
+        {{ tags._umap.fillOpacity|default(0.3) }}
+      dashArray: |
+        {{ tags._umap.dashArray|default('') }}
