@@ -1,0 +1,23 @@
+{
+  "name": "@geowiki-net/geowiki-umap",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Add support for UMAP files to geowiki",
+  "main": "src/umap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephan Bösch-Plepelits <skunk@xover.mud.at>",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geowiki-net/geowiki-umap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geowiki-net/geowiki-umap/issues"
+  },
+  "homepage": "https://github.com/geowiki-net/geowiki-umap#readme",
+  "dependencies": {
+    "@geowiki-net/geowiki-api": "github:geowiki-net/geowiki-api#devel-4"
+  }
+}
