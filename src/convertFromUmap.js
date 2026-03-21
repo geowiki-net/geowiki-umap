@@ -4,6 +4,8 @@ module.exports = function convertFromUmap (content) {
   content = JSON.parse(content)
   
   const result = {
+    version: 0.6,
+    generator: 'geowiki-umap',
     elements: []
   }
 
