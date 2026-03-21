@@ -13,8 +13,9 @@ module.exports = function convertFromUmap (content) {
       geojson2elements(feature, elements, {})
 
       elements.forEach(el => {
-        el.tags._umap = { ...layer._storage, ...(feature.properties._storage_options || {}) }
+        el.tags._umap = { ...layer._umap_options, ...layer._storage, ...(feature.properties._umap_options || feature.properties._storage_options || {}) }
         delete el.tags._storage_options
+        delete el.tags._umap_options
       })
 
       result.elements = result.elements.concat(elements)
