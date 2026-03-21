@@ -1,20 +1,44 @@
 layers:
-- query: way
+- query:
+    0: nwr
   feature:
     title: |
       {{ tags.name }}
     body: |
       {{ tags.description }}
     style:
+      nodeFeature: |
+        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}CircleMarker
+        {% else %}Marker
+        {% endif %}
+      radius: |
+        {% if tags._umap.iconClass == 'Circle' %}5
+        {% elseif tags._umap.iconClass in ['LargeCircle', 'Raw'] %}{{ tags._umap.iconSize|default(24) / 2 }}
+        {% endif %}
       width: |
-        {{ tags._umap.weight|default(3) }}
+        {% if tags._umap.iconClass == 'Circle' %}2
+        {% elseif tags._umap.iconClass == 'Raw' %}0.5
+        {% else %}{{ tags._umap.weight|default(3) }}
+        {% endif %}
       color: |
-        {{ tags._umap.color }}
+        {% if tags._umap.iconClass == 'Circle' %}white
+        {% elseif tags._umap.iconClass == 'Raw' %}black
+        {% else %}{{ tags._umap.color|default('DarkCyan') }}
+        {% endif %}
       opacity: |
         {{ tags._umap.opacity|default(1) }}
+      fill: |
+        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}true
+        {% else %}{{ tags._umap.fill|default(is_area) }}
+        {% endif %}
       fillColor: |
-        {{ tags._umap.fillColor|default(tags._umap.color) }}
+        {% if tags._umap.iconClass in ['Circle'] %}{{ tags._umap.iconColor|default(tags._umap.color)|default('DarkBlue') }}
+        {% elseif tags._umap.iconClass in ['LargeCircle', 'Raw'] %}white
+        {% else %}{{ tags._umap.fillColor|default(tags._umap.color) }}
+        {% endif %}
       fillOpacity: |
-        {{ tags._umap.fillOpacity|default(0.3) }}
+        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
+        {% else %}{{ tags._umap.fillOpacity|default(0.3) }}
+        {% endif %}
       dashArray: |
         {{ tags._umap.dashArray|default('') }}
