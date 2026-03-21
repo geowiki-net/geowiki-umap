@@ -9,6 +9,22 @@ module.exports = function convertFromUmap (content) {
     elements: []
   }
 
+  if (content.properties.center) {
+    result.center = {
+      lat: content.properties.center.lat,
+      lon: content.properties.center.lng
+    }
+    result.zoom = content.properties.zoom
+  }
+
+  result.tags = {
+    _umap: content.properties
+  }
+
+  if (content.properties.name) {
+    result.tags.name = content.properties.name
+  }
+
   content.layers.forEach(layer => {
     layer.features.forEach(feature => {
       const elements = []
