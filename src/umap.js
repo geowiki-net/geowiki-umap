@@ -1,5 +1,5 @@
-import GeowikiAPI from '@geowiki-net/geowiki-api'
-import convertFromUmap from './convertFromUmap.js'
+const GeowikiAPI = require('@geowiki-net/geowiki-api')
+const convertFromUmap = require('./convertFromUmap.js')
 
 GeowikiAPI.registerFileFormat({
   id: 'umap',
@@ -10,7 +10,6 @@ GeowikiAPI.registerFileFormat({
 
   load (content, options, callback) {
     const data = convertFromUmap(content, options)
-    console.log(JSON.stringify(data, null, '  '))
     callback(null, data)
   }
 })

@@ -1,6 +1,6 @@
-import geojson2elements from '@geowiki-net/geowiki-api/src/geojson2elements.js'
+const geojson2elements = require('@geowiki-net/geowiki-api/src/geojson2elements.js')
 
-function convertFromUmap (content) {
+module.exports = function convertFromUmap (content) {
   content = JSON.parse(content)
   
   const result = {
@@ -23,5 +23,3 @@ function convertFromUmap (content) {
 
   return result
 }
-
-export default convertFromUmap
