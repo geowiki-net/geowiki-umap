@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/geowiki-net/geowiki-umap#readme",
   "dependencies": {
-    "@geowiki-net/geowiki-api": "github:geowiki-net/geowiki-api#devel-4"
+    "@geowiki-net/geowiki-api": "^4.0.0-beta.3"
   }
 }
