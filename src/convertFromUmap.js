@@ -17,9 +17,9 @@ module.exports = function convertFromUmap (content) {
     result.zoom = content.properties.zoom
   }
 
-  result.tags = {
-    _umap: content.properties
-  }
+  result.tags = {}
+  Object.entries(content.properties).forEach(([k, v]) => result.tags['_umap_' + k] = v)
+  result.tags.name = content.properties.name
 
   if (content.properties.name) {
     result.tags.name = content.properties.name
@@ -31,7 +31,8 @@ module.exports = function convertFromUmap (content) {
       geojson2elements(feature, elements, {})
 
       elements.forEach(el => {
-        el.tags._umap = { ...layer._umap_options, ...layer._storage, ...(feature.properties._umap_options || feature.properties._storage_options || {}) }
+        const _umap = { ...layer._umap_options, ...layer._storage, ...(feature.properties._umap_options || feature.properties._storage_options || {}) }
+        Object.entries(_umap).forEach(([k, v]) => el.tags['_umap_' + k] = v)
         delete el.tags._storage_options
         delete el.tags._umap_options
       })

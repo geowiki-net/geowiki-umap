@@ -9,53 +9,53 @@ layers:
       {{ tags.description }}
     style:
       nodeFeature: |
-        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}CircleMarker
+        {% if tags._umap_iconClass in ['Circle', 'LargeCircle', 'Raw'] %}CircleMarker
         {% else %}Marker
         {% endif %}
       radius: |
-        {% if tags._umap.iconClass == 'Circle' %}5
-        {% elseif tags._umap.iconClass in ['LargeCircle', 'Raw'] %}{{ tags._umap.iconSize|default(24) / 2 }}
+        {% if tags._umap_iconClass == 'Circle' %}5
+        {% elseif tags._umap_iconClass in ['LargeCircle', 'Raw'] %}{{ tags._umap_iconSize|default(24) / 2 }}
         {% endif %}
       width: |
-        {% if tags._umap.iconClass == 'Circle' %}2
-        {% elseif tags._umap.iconClass == 'Raw' %}0.5
-        {% else %}{{ tags._umap.weight|default(3) }}
+        {% if tags._umap_iconClass == 'Circle' %}2
+        {% elseif tags._umap_iconClass == 'Raw' %}0.5
+        {% else %}{{ tags._umap_weight|default(3) }}
         {% endif %}
       color: |
-        {% if tags._umap.iconClass == 'Circle' %}white
-        {% elseif tags._umap.iconClass == 'Raw' %}black
-        {% else %}{{ tags._umap.color|default('Blue') }}
+        {% if tags._umap_iconClass == 'Circle' %}white
+        {% elseif tags._umap_iconClass == 'Raw' %}black
+        {% else %}{{ tags._umap_color|default('Blue') }}
         {% endif %}
       opacity: |
-        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
-        {% else %}{{ tags._umap.opacity|default(0.5) }}
+        {% if tags._umap_iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
+        {% else %}{{ tags._umap_opacity|default(0.5) }}
         {% endif %}
       fill: |
-        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}true
-        {% else %}{{ tags._umap.fill|default(geometry|is_closed) }}
+        {% if tags._umap_iconClass in ['Circle', 'LargeCircle', 'Raw'] %}true
+        {% else %}{{ tags._umap_fill|default(geometry|is_closed) }}
         {% endif %}
       fillColor: |
-        {% if tags._umap.iconClass in ['Circle'] %}{{ tags._umap.iconColor|default(tags._umap.color)|default('DarkBlue') }}
-        {% elseif tags._umap.iconClass in ['LargeCircle', 'Raw'] %}white
-        {% else %}{{ tags._umap.fillColor|default(tags._umap.color)|default('Blue') }}
+        {% if tags._umap_iconClass in ['Circle'] %}{{ tags._umap_iconColor|default(tags._umap_color)|default('DarkBlue') }}
+        {% elseif tags._umap_iconClass in ['LargeCircle', 'Raw'] %}white
+        {% else %}{{ tags._umap_fillColor|default(tags._umap_color)|default('Blue') }}
         {% endif %}
       fillOpacity: |
-        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
-        {% else %}{{ tags._umap.fillOpacity|default(0.3) }}
+        {% if tags._umap_iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
+        {% else %}{{ tags._umap_fillOpacity|default(0.3) }}
         {% endif %}
       text: |-
-        {% if tags._umap.iconClass == 'Circle' %}{{ tags._umap.iconUrl }}
-        {% else %}{{ tags._umap.textPath }}
+        {% if tags._umap_iconClass == 'Circle' %}{{ tags._umap_iconUrl }}
+        {% else %}{{ tags._umap_textPath }}
         {% endif %}
       textFill: |-
-        {% if tags._umap.iconClass == 'Circle' %}Black
-        {% else %}{{ tags._umap.color|default('Blue') }}
+        {% if tags._umap_iconClass == 'Circle' %}Black
+        {% else %}{{ tags._umap_color|default('Blue') }}
         {% endif %}
       textFillOpacity: |-
-        {{ tags._umap.opacity|default(0.5) }}
+        {{ tags._umap_opacity|default(0.5) }}
       textRepeat: |
-        {{ tags._umap.textPathRepeat|default(false) }}
+        {{ tags._umap_textPathRepeat|default(false) }}
       textFontSize: |-
-        {{ tags._umap.textPathSize|default('20') }}
+        {{ tags._umap_textPathSize|default('20') }}
       dashArray: |
-        {{ tags._umap.dashArray|default('') }}
+        {{ tags._umap_dashArray|default('') }}
