@@ -5,7 +5,7 @@ module.exports = function convertFromUmap (content) {
   
   const result = {
     version: 0.6,
-    generator: 'geowiki-umap',
+    generator: 'geowiki-module-umap',
     elements: []
   }
 
