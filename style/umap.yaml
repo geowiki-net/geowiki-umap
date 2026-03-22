@@ -27,7 +27,9 @@ layers:
         {% else %}{{ tags._umap.color|default('Blue') }}
         {% endif %}
       opacity: |
-        {{ tags._umap.opacity|default(0.5) }}
+        {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
+        {% else %}{{ tags._umap.opacity|default(0.5) }}
+        {% endif %}
       fill: |
         {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}true
         {% else %}{{ tags._umap.fill|default(geometry|is_closed) }}
@@ -42,12 +44,16 @@ layers:
         {% else %}{{ tags._umap.fillOpacity|default(0.3) }}
         {% endif %}
       text: |-
-        {{ tags._umap.textPath }}
+        {% if tags._umap.iconClass == 'Circle' %}{{ tags._umap.iconUrl }}
+        {% else %}{{ tags._umap.textPath }}
+        {% endif %}
       textFill: |-
-        {{ tags._umap.color|default('Blue') }}
+        {% if tags._umap.iconClass == 'Circle' %}Black
+        {% else %}{{ tags._umap.color|default('Blue') }}
+        {% endif %}
       textFillOpacity: |-
         {{ tags._umap.opacity|default(0.5) }}
-      textRepeat: |-
+      textRepeat: |
         {{ tags._umap.textPathRepeat|default(false) }}
       textFontSize: |-
         {{ tags._umap.textPathSize|default('20') }}
