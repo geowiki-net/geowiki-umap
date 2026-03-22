@@ -1,3 +1,4 @@
+background: transparent
 layers:
 - query:
     0: nwr
@@ -40,5 +41,15 @@ layers:
         {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}1
         {% else %}{{ tags._umap.fillOpacity|default(0.3) }}
         {% endif %}
+      text: |-
+        {{ tags._umap.textPath }}
+      textFill: |-
+        {{ tags._umap.color|default('Blue') }}
+      textFillOpacity: |-
+        {{ tags._umap.opacity|default(0.5) }}
+      textRepeat: |-
+        {{ tags._umap.textPathRepeat|default(false) }}
+      textFontSize: |-
+        {{ tags._umap.textPathSize|default('20') }}
       dashArray: |
         {{ tags._umap.dashArray|default('') }}
