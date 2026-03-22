@@ -30,7 +30,7 @@ layers:
         {{ tags._umap.opacity|default(0.5) }}
       fill: |
         {% if tags._umap.iconClass in ['Circle', 'LargeCircle', 'Raw'] %}true
-        {% else %}{{ tags._umap.fill|default(is_area) }}
+        {% else %}{{ tags._umap.fill|default(geometry|is_closed) }}
         {% endif %}
       fillColor: |
         {% if tags._umap.iconClass in ['Circle'] %}{{ tags._umap.iconColor|default(tags._umap.color)|default('DarkBlue') }}
