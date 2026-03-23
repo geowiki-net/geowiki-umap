@@ -54,7 +54,7 @@ layers:
         {% endif %}
       textFill: |-
         {% if iconClass == 'Circle' %}Black
-        {% else %}{{ tags._umap_color|default('Blue') }}
+        {% else %}{{ tags._umap_textPathColor|default(tags._umap_color)|default('Blue') }}
         {% endif %}
       textFillOpacity: |-
         {{ tags._umap_opacity|default(0.5) }}
@@ -62,5 +62,6 @@ layers:
         {{ tags._umap_textPathRepeat|default(false) }}
       textFontSize: |-
         {{ tags._umap_textPathSize|default('20') }}
+      textCenter: true
       dashArray: |
         {{ tags._umap_dashArray|default('') }}
